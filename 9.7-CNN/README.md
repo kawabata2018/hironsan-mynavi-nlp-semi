@@ -1,4 +1,17 @@
 # 9-7 畳み込みニューラルネットワーク
+## 参考記事
+- https://qiita.com/icoxfog417/items/5fd55fad152231d706c2
+
+## 畳み込みのイメージ
+- 2次元畳み込み
+<img width=200 src="./images/conv2d.jpg">
+
+- 1次元畳み込み
+<img width=200 src="./images/conv1d.jpg">
+
+- 0次元?畳み込み（=全結合層）
+<img width=200 src="./images/conv0d.jpg">
+
 ## 実装
 - docker-composeのruntime用にパスを通す
 ```
