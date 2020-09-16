@@ -30,6 +30,10 @@ docker-compose exec tf_gpu /bin/bash
 ```
 - train.pyを実行（前処理済のembeddingベクトルを読み込む）＋コンソールへ表示させながらファイルへ出力
 ```
+<<<<<<< HEAD
 /work# python -u train.py -sf -lt 2>&1 | tee hogehoge.log
+=======
+/work# python -u train.py -lt 2>&1 | tee hogehoge.log
+>>>>>>> 3b2842eeec4e0d846e841862d501947f48b86e95
 ```
 
