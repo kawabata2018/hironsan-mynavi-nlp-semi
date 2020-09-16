@@ -1,4 +1,7 @@
+import os
 import time
+import argparse
+import numpy as np
 from utils import *
 from preprocessing import *
 from inference import InferenceAPI
@@ -14,7 +17,8 @@ def return_time(startime):
     return "\n[{:.2f}s]".format(time.time() - startime)
 
 
-def main():
+def main(args):
+    print(args)
     startime = time.time()
 
     # Set hyper-parameters.
@@ -42,9 +46,25 @@ def main():
     x_test = pad_sequences(x_test, maxlen=maxlen, truncating='post')
 
     # Preparing word embedding.
-    print(return_time(startime), "3. Preparing word embedding ...")
-    wv = load_fasttext('data/cc.ja.300.vec.gz')
-    wv = filter_embeddings(wv, vocab.word_index, num_words)
+    if args.loadwv:
+        print(return_time(startime), "3. Loading word embedding ...")
+        wv_path = 'data/wv_{0}_{1}.npy'.format(maxlen, num_words)
+        if os.path.exists(wv_path):
+            wv = np.load(wv_path)
+            print(return_time(startime), "Loaded word embedding successfully!")
+        else:
+            print(return_time(startime), "Word embedding file doesn't exist")
+            exit()
+
+    else:
+        print(return_time(startime), "3. Preparing word embedding ...")
+        wv = load_fasttext('data/cc.ja.300.vec.gz')
+        wv = filter_embeddings(wv, vocab.word_index, num_words)
+        # Saving word embedding.
+        if args.savewv:
+            wv_path = 'data/wv_{0}_{1}.npy'.format(maxlen, num_words)
+            np.save(wv_path, wv)
+            print(return_time(startime), "Saved word embedding successfully!", wv_path)
 
     # Build models.
     models = [
@@ -101,4 +121,13 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    # python train.py -sf => False
+    # python train.py    => True
+    parser.add_argument('--savewv', '-sf', action='store_false')
+    # python train.py -lt => True
+    # python train.py    => False
+    parser.add_argument('--loadwv', '-lt', action='store_true')
+
+    args = parser.parse_args()
+    main(args)
