@@ -20,6 +20,7 @@ def return_time(startime):
 def main(args):
     print(args)
     startime = time.time()
+    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
     # Set hyper-parameters.
     batch_size = 128
