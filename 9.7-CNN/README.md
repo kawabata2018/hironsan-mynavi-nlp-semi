@@ -33,3 +33,16 @@ docker-compose exec tf_gpu /bin/bash
 /work# python -u train.py -sf -lt 2>&1 | tee hogehoge.log
 ```
 
+## 学習
+- トレーニング速度比較（Epoch平均）
+
+|model|cpu|gpu|
+|---|---|---|
+|RNN-None|30s|9s|
+|LSTM-None|34s|13s|
+|CNN-None|12s|5s|
+|RNN-wv|14s|10s|
+|LSTM-wv|36s|13s|
+|CNN-wv|12s|4s|
+|CNN-wv-notrain|10s|1s|
+
