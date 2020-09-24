@@ -1,0 +1,14 @@
+version: '2.3'
+
+services:
+  tf_gpu:
+    build: .
+    image: hironsan-mynavi/tensorflow-gpu:11.4
+    container_name: tensorflow_gpu
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - .:/work
+    command: /bin/bash
+    tty: true
