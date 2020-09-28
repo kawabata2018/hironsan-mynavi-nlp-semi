@@ -2,11 +2,11 @@
 
 ## モデル化
 入力系列<img src="https://latex.codecogs.com/gif.latex?\inline&space;\mathbf{\mathbb{}X}">と出力系列<img src="https://latex.codecogs.com/gif.latex?\inline&space;\mathbf{\mathbb{}Y}">を以下のように表す。
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;X_i">は系列<img src="https://latex.codecogs.com/gif.latex?\inline&space;\mathbf{\mathbb{}X}">の<img src="https://latex.codecogs.com/gif.latex?\inline&space;i">番目の要素を表す。
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;X_i"> は系列<img src="https://latex.codecogs.com/gif.latex?\inline&space;\mathbf{\mathbb{}X}">の<img src="https://latex.codecogs.com/gif.latex?\inline&space;i">番目の要素を表す。
 - <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;\mathbf{X}&space;=&space;(x_1,&space;\dots&space;,&space;x_I)">
 - <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;\mathbf{Y}&space;=&space;(y_1,&space;\dots&space;,&space;y_J)">
 
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;P(\mathbf{Y}|\mathbf{X})">を以下のようにモデル化する。
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;P(\mathbf{Y}|\mathbf{X})"> を以下のようにモデル化する。
 - <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;\approx&space;P(y_1|\mathbf{X})P(y_2|y_1,&space;\mathbf{X})&space;\dots&space;P(y_{J&plus;1}|y_J,&space;\mathbf{X})">
 - <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;=&space;\prod_{j=1}^{J&plus;1}&space;P(y_j|y_1,&space;\dots&space;,&space;y_{j-1}&space;,&space;\mathbf{X})">
 - <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;=&space;\prod_{j=1}^{J&plus;1}&space;P(y_j|z,&space;y_1,&space;\dots&space;,&space;y_{j-1})">
